@@ -87,13 +87,31 @@ class PedidoCompra
         $this->listLineasCompras[] = $lineasCompras;
     }
 
+
+
+
     public function MostrarInformacion()
-    {
+    { //fecha , proveedor(descripcion), fecha entrega estimada, 
+        //costo total, pedido cerrado,lineas de compra(producto(descripcion y precio de venta),
+        // cant, costo unitario y entrega) 
+
         echo 'Fecha de Pedido: ' . $this->getFecha() . '<br>';
+
         echo 'Proveedor: ' . $this->getProveedor()->getDescripcion() . '<br>';
+
+        echo 'Fecha Estimada de Entrega: ' . $this->getFechaEntregaEstimada() . '<br>';
+
+        echo 'Costo Total: ' . $this->getCostoTotal() . '<br>';
+
+        echo 'Pedido Cerrado: ' . $this->getPedidoCerrado() . '<br>';
+
         echo 'Linea de Compra: ' . '<br>';
         foreach ($this->getListLineasCompras() as $c) {
             echo 'Producto: ' . $c->getProducto()->getDescripcion() . '<br>';
+            echo 'Precio de Venta: ' . $c->getProducto()->getPrecioVta() . '<br>';
+            echo 'Cantidad: ' . $c->getCantidad() . '<br>';
+            echo 'Costo Unitario: ' . $c->getCostoUnitario() . '<br>';
+            echo 'Entrega: ' . $c->getFueEntregado() . '<br>';
         }
     }
 }
